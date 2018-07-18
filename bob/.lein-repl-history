@@ -1,0 +1,8 @@
+exit
+(find-doc regex)
+(require clojure.core)
+(doc cond)
+(find-doc "regex")
+clear
+exit
+(find-doc "regex")
