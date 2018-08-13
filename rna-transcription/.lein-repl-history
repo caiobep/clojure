@@ -1,0 +1,6 @@
+vim src/rna_transcription.clj
+exit
+(find-doc "cond")
+(doc cond)
+exit()
+exit

@@ -1,18 +1,18 @@
-(ns bob
-  (:require [clojure.string :as str]))
+(ns bob (:require [clojure.string :as s]))
 
-(defn question? [word]
-  (str/ends-with? word "?"))
+(declare silence? shout? question?)
 
-(defn shout? [s]
-  (and
-   (boolean (re-find #"[A-Z]" s))
-   (= s (str/upper-case s))))
+(def silence? [sentence] (s/blank sentence))
+(def question?  [sentence]  (= \? (last sentence)))
 
-(defn response-for [s]
+(defn response-for [sentence]
   (cond
-    (str/blank? s) "Fine. Be that way!"
-    (and (question? s) (shout? s)) "Calm down, I know what I'm doing!" ; Forcefull question
-    (question? s) "Sure."
-    (shout? s) "Whoa, chill out!"
-    :else "Whatever."))
+    (silence?   sentence) "Fine be that way!"
+    (shout?     sentence) "Woah, chill out!"
+    (question?  sentence) "Sure."
+    :else   "Whatever."))
+
+(defn- )
+(defn- )
+(defn- shout?     [sentence]  (and (= sentence (s/upper-case sentence))
+                                   (re-seq #"(?i) \p{L}" sentence)))
